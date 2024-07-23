@@ -1,7 +1,5 @@
 import { ReactNode } from "react";
 
-import "normalize.css";
-
 interface LayoutProps {
   children: ReactNode;
 }

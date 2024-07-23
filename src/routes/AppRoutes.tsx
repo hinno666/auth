@@ -9,12 +9,21 @@ import {
 import { FC } from "react";
 import { Layout } from "../components/Layout";
 import { LoginPage, MainPage, NotFoundPage, RegisterPage } from "../pages";
+import { AuthLayout } from "../components/AuthLayout/AuthLayout";
 
-const MainLayout: FC = () => {
+const MainLayoutPage: FC = () => {
   return (
     <Layout>
       <Outlet />
     </Layout>
+  );
+};
+
+const AuthLayoutPage: FC = () => {
+  return (
+    <AuthLayout>
+      <Outlet />
+    </AuthLayout>
   );
 };
 
@@ -25,12 +34,14 @@ const isAuthenticated = () => {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route element={<AuthLayoutPage />}>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Route>
       <Route
-        path="/"
+        path=""
         element={
-          isAuthenticated() ? <MainLayout /> : <Navigate to="/login" replace />
+          isAuthenticated() ? <MainLayoutPage /> : <Navigate to="/login" replace />
         }
       >
         <Route path="/" element={<MainPage />} />
