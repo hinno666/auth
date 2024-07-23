@@ -1,5 +1,11 @@
+import { ReactNode } from "react";
+
 import "normalize.css";
 
-export const Layout = (props: any) => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export const Layout = (props: LayoutProps) => {
   return <div>{props.children}</div>;
 };
