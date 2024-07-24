@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
-import { selectUser } from "../store/slices/userSlice";
+import { useAppSelector } from "../store/hooks";
 
 export const useAuth = () => {
-  const { email, token, id } = useSelector(selectUser);
-
+  const { email, token, id } = useAppSelector(state => state.user);
+  
   return {
     isAuth: !!email,
     email,

@@ -27,10 +27,6 @@ const AuthLayoutPage: FC = () => {
   );
 };
 
-const isAuthenticated = () => {
-  return false;
-};
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -38,12 +34,7 @@ const router = createBrowserRouter(
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Route>
-      <Route
-        path=""
-        element={
-          isAuthenticated() ? <MainLayoutPage /> : <Navigate to="/login" replace />
-        }
-      >
+      <Route path="" element={<MainLayoutPage />}>
         <Route path="/" element={<MainPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
