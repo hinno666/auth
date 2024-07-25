@@ -1,5 +1,4 @@
 import {
-  Navigate,
   Outlet,
   Route,
   RouterProvider,
@@ -7,7 +6,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import { FC } from "react";
-import { Layout } from "../components/Layout";
+import { Layout } from "../components/Layout/Layout";
 import { LoginPage, MainPage, NotFoundPage, RegisterPage } from "../pages";
 import { AuthLayout } from "../components/AuthLayout/AuthLayout";
 

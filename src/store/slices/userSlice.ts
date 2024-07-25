@@ -1,15 +1,18 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { LocalStorageKeys } from "../../constants/localStorageKeys";
 
 export interface AuthState {
-  email: string | null;
-  token: string | null;
-  id: string | null;
+  email: string;
+  token: string;
+  id: string;
+  isAuth: boolean | string;
 }
 
 const initialState: AuthState = {
-  email: null,
-  token: null,
-  id: null,
+  email: "",
+  token: "",
+  id: "",
+  isAuth: localStorage.getItem(LocalStorageKeys.IS_AUTH) ?? "",
 };
 
 const userSlice = createSlice({
@@ -20,11 +23,15 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.id = action.payload.id;
+      state.isAuth = true;
+      localStorage.setItem(LocalStorageKeys.IS_AUTH, "true");
     },
     removeUser: (state) => {
-      state.email = null;
-      state.token = null;
-      state.id = null;
+      state.email = "";
+      state.token = "";
+      state.id = "";
+      state.isAuth = false;
+      localStorage.removeItem(LocalStorageKeys.IS_AUTH);
     },
   },
 });
