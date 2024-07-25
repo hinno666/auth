@@ -19,6 +19,7 @@ export const Login = () => {
               email: user.email,
               id: user.uid,
               token: token,
+              isAuth: true,
             })
           );
           navigate("/");

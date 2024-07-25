@@ -1,7 +1,4 @@
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { AuthForm } from "../AuthForm/AuthForm";
 import { setUser } from "../../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +19,7 @@ export const SignUp = () => {
               email: user.email,
               id: user.uid,
               token: token,
+              isAuth: true,
             })
           );
           navigate("/");

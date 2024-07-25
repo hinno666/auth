@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { LocalStorageKeys } from "../../constants/localStorageKeys";
 
 export interface AuthState {
-  email: string;
+  email: string | null;
   token: string;
   id: string;
   isAuth: boolean | string;
@@ -23,7 +23,7 @@ const userSlice = createSlice({
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.id = action.payload.id;
-      state.isAuth = true;
+      state.isAuth = action.payload.isAuth;
       localStorage.setItem(LocalStorageKeys.IS_AUTH, "true");
     },
     removeUser: (state) => {
